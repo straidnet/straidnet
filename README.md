@@ -1,16 +1,53 @@
-## Hi there 👋
+# ⚡ STRAIDNET SOLUTIONS
 
-<!--
-**straidnet/straidnet** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<div align="center">
 
-Here are some ideas to get you started:
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-red?style=for-the-badge&logo=github&logoColor=white)](https://straidnet.github.io/straidnet/)
+[![Python](https://img.shields.io/badge/Python-Learning-red?style=for-the-badge&logo=python&logoColor=white)](https://github.com/straidnet)
+[![Telegram](https://img.shields.io/badge/Bot-@StraidnetBot-red?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/StraidnetBot)
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+**🐍 Python Development & Automation Projects**
+
+*Founded in 2022*
+
+</div>
+
+---
+
+## 🚀 About
+
+Python developer passionate about creating automation solutions and learning new technologies:
+
+- 🤖 **Telegram Bot Development** - Custom bots for automation and interaction
+- 🕷️ **Web Scraping Projects** - Data extraction and processing tools  
+- ⚙️ **Automation Scripts** - Tools to make tasks easier and more efficient
+- ☁️ **Learning Cloud Technologies** - Exploring AWS and deployment solutions
+
+---
+
+## 🌐 Portfolio Website
+
+**Check out my projects:** **[straidnet.github.io/straidnet](https://straidnet.github.io/straidnet/)**
+
+---
+
+## 📞 Connect
+
+<div align="center">
+
+| Platform | Link |
+|----------|------|
+| 🐙 GitHub | [github.com/straidnet](https://github.com/straidnet) |
+| 🤖 Telegram Bot | [@StraidnetBot](https://t.me/StraidnetBot) |
+
+</div>
+
+---
+
+<div align="center">
+
+**⚡ Learning and building since 2022**
+
+*© 2022-2024 STRAIDNET SOLUTIONS*
+
+</div>

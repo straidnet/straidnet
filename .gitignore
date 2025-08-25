@@ -1,0 +1,15 @@
+# Exclude private files
+excluded/
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+
+# IDE files
+.vscode/
+.idea/
+
+# Temp files
+*.tmp
+*.temp
