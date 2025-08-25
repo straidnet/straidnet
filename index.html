@@ -31,25 +31,28 @@
         }
         
         :root {
-            --primary: #dc2626;
-            --primary-dark: #b91c1c;
-            --primary-light: #f87171;
-            --secondary: #1f2937;
-            --secondary-light: #374151;
-            --accent: #fbbf24;
-            --text-primary: #ffffff;
-            --text-secondary: #d1d5db;
-            --text-muted: #9ca3af;
+            --primary: #6366f1;
+            --primary-dark: #4338ca;
+            --primary-light: #a5b4fc;
+            --secondary: #1e293b;
+            --secondary-light: #475569;
+            --accent: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
             --background: #0f172a;
             --background-light: #1e293b;
-            --border: #334155;
+            --background-card: #334155;
+            --border: #475569;
             --success: #10b981;
             --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-dark));
             --gradient-secondary: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            --gradient-accent: linear-gradient(135deg, var(--primary), var(--accent));
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
             --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            --shadow-xl: 0 25px 50px -12px rgba(220, 38, 38, 0.25);
+            --shadow-xl: 0 25px 50px -12px rgba(99, 102, 241, 0.3);
+            --glow: 0 0 20px rgba(99, 102, 241, 0.3);
         }
         
         body {
@@ -149,9 +152,9 @@
             text-align: center;
             position: relative;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(185, 28, 28, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(248, 113, 113, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(67, 56, 202, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(165, 180, 252, 0.05) 0%, transparent 50%);
         }
         
         .hero::before {
@@ -162,8 +165,8 @@
             right: 0;
             bottom: 0;
             background: 
-                linear-gradient(45deg, transparent 49%, rgba(220, 38, 38, 0.03) 50%, transparent 51%),
-                linear-gradient(-45deg, transparent 49%, rgba(220, 38, 38, 0.03) 50%, transparent 51%);
+                linear-gradient(45deg, transparent 49%, rgba(99, 102, 241, 0.03) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(99, 102, 241, 0.03) 50%, transparent 51%);
             background-size: 60px 60px;
             opacity: 0.4;
         }
@@ -179,8 +182,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(220, 38, 38, 0.1);
-            border: 1px solid rgba(220, 38, 38, 0.2);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 50px;
             padding: 0.5rem 1.2rem;
             font-size: 0.875rem;
@@ -259,7 +262,7 @@
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 25px 50px -12px rgba(220, 38, 38, 0.4);
+            box-shadow: var(--shadow-xl), var(--glow);
         }
         
         .btn-secondary {
@@ -270,7 +273,8 @@
         
         .btn-secondary:hover {
             border-color: var(--primary);
-            background: rgba(220, 38, 38, 0.05);
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary-light);
             transform: translateY(-2px);
         }
         
@@ -292,8 +296,8 @@
         
         .section-badge {
             display: inline-block;
-            background: rgba(220, 38, 38, 0.1);
-            border: 1px solid rgba(220, 38, 38, 0.2);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 50px;
             padding: 0.5rem 1rem;
             font-size: 0.875rem;
@@ -356,7 +360,8 @@
         }
         
         .project-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--background-card);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             border-radius: 20px;
             overflow: hidden;
@@ -446,7 +451,8 @@
         }
         
         .contact-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--background-card);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2rem;
@@ -611,7 +617,7 @@
                     that make everyday tasks easier and more efficient.
                 </p>
                 <p class="about-text fade-in">
-                    Currently exploring <span class="highlight">web scraping</span>, 
+                    Currently exploring <span class="highlight">Telegram scraping</span>, 
                     <span class="highlight">API integrations</span>, and <span class="highlight">cloud technologies</span>. 
                     Always learning something new and improving my coding skills.
                 </p>
@@ -652,17 +658,17 @@
                 
                 <div class="project-card fade-in">
                     <div class="project-header">
-                        <h3 class="project-title">Web Scraping Tools</h3>
-                        <div class="project-type">Data Collection</div>
+                        <h3 class="project-title">Telegram Data Scraper</h3>
+                        <div class="project-type">Data Extraction</div>
                     </div>
                     <div class="project-body">
                         <p class="project-description">
-                            Custom web scraping scripts for extracting and processing data from various websites and APIs.
+                            Advanced Telegram channel scraper for extracting messages, media, and user data with smart filtering capabilities.
                         </p>
                         <div class="tech-stack">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">BeautifulSoup</span>
-                            <span class="tech-tag">Requests</span>
+                            <span class="tech-tag">Telethon</span>
+                            <span class="tech-tag">Data Mining</span>
                         </div>
                         <a href="https://github.com/straidnet" class="project-link" target="_blank">
                             View on GitHub <i class="fas fa-external-link-alt"></i>
@@ -672,17 +678,17 @@
                 
                 <div class="project-card fade-in">
                     <div class="project-header">
-                        <h3 class="project-title">Price Monitor Bot</h3>
-                        <div class="project-type">Automation Tool</div>
+                        <h3 class="project-title">Arbitrage Checker</h3>
+                        <div class="project-type">Financial Analysis</div>
                     </div>
                     <div class="project-body">
                         <p class="project-description">
-                            A bot that monitors price changes across different platforms and sends notifications when conditions are met.
+                            Real-time arbitrage opportunity detector that monitors price differences across multiple cryptocurrency exchanges.
                         </p>
                         <div class="tech-stack">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">API Integration</span>
-                            <span class="tech-tag">Notifications</span>
+                            <span class="tech-tag">Real-time Data</span>
                         </div>
                         <a href="https://github.com/straidnet" class="project-link" target="_blank">
                             View on GitHub <i class="fas fa-external-link-alt"></i>

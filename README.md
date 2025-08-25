@@ -19,7 +19,7 @@
 Python developer passionate about creating automation solutions and learning new technologies:
 
 - 🤖 **Telegram Bot Development** - Custom bots for automation and interaction
-- 🕷️ **Web Scraping Projects** - Data extraction and processing tools  
+- 📱 **Telegram Scraping** - Data extraction from Telegram channels and chats  
 - ⚙️ **Automation Scripts** - Tools to make tasks easier and more efficient
 - ☁️ **Learning Cloud Technologies** - Exploring AWS and deployment solutions
 
