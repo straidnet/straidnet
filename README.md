@@ -59,7 +59,7 @@ QA and automation developer passionate about delivering reliable, efficient, and
 | Platform | Link |
 |----------|------|
 | 🐙 GitHub | [github.com/straidnet](https://github.com/straidnet) |
-| 🤖 Automation Bot | [@StraidnetBot](https://t.me/StraidnetBot) |
+| 🤖 Telegram Bot | [@StraidnetBot](https://t.me/StraidnetBot) |
 
 </div>
 
