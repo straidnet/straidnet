@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRAIDNET | QA & Automation Developer</title>
+    <meta name="description" content="QA and automation developer building testing workflows, Python automations, and data-driven solutions.">
+    <meta name="keywords" content="qa testing, automation, python developer, selenium, manual testing, api testing, web scraping">
+    <meta name="author" content="straidnet">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="STRAIDNET - QA & Automation Developer">
+    <meta property="og:description" content="QA and automation developer building testing workflows, Python automations, and data-driven solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://straidnet.github.io/straidnet/">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pure-red: #ff0000;
+            --blood-red: #cc0000;
+            --dark-red: #990000;
+            --bright-red: #ff3333;
+            --light-red: #ff6666;
+            --neon-red: #ff0040;
+            --black: #000000;
+            --dark-black: #0a0a0a;
+            --gray-black: #1a1a1a;
+            --white: #ffffff;
+            --light-gray: #cccccc;
+            --red-glow: 0 0 20px #ff0000;
+            --red-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(45deg, var(--black), var(--gray-black));
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb {
+            background: var(--pure-red);
+            border-radius: 5px;
+            box-shadow: var(--red-glow);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--pure-red);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--pure-red);
+            text-shadow: var(--red-glow);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--pure-red);
+            border-color: var(--pure-red);
+            box-shadow: var(--red-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(204, 0, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--black) 0%, var(--dark-black) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 98px,
+                    rgba(255, 0, 0, 0.03) 100px
+                );
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100px); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: var(--pure-red);
+            text-shadow: var(--red-glow);
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--light-red);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--light-gray);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--pure-red);
+            color: var(--white);
+            box-shadow: var(--red-shadow);
+        }
+
+        .btn-primary:hover {
+            background: var(--bright-red);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--pure-red);
+            border: 2px solid var(--pure-red);
+        }
+
+        .btn-secondary:hover {
+            background: var(--pure-red);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            text-align: center;
+            color: var(--pure-red);
+            text-shadow: var(--red-glow);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--black), var(--gray-black));
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .skill-card {
+            background: var(--dark-black);
+            border: 2px solid var(--dark-red);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--pure-red), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            border-color: var(--pure-red);
+            transform: translateY(-10px);
+            box-shadow: var(--red-shadow);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--pure-red);
+            margin-bottom: 1rem;
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skill-desc {
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--gray-black);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            background: var(--black);
+            border: 2px solid var(--dark-red);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 0, 0, 0.05) 50%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            border-color: var(--pure-red);
+            transform: translateY(-5px);
+            box-shadow: var(--red-shadow);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--pure-red), var(--blood-red));
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .project-type {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-desc {
+            color: var(--light-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--dark-red);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .project-link {
+            color: var(--pure-red);
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .project-link:hover {
+            color: var(--bright-red);
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--black), var(--dark-black));
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            background: var(--dark-black);
+            border: 2px solid var(--pure-red);
+            border-radius: 15px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .contact-link:hover {
+            background: var(--pure-red);
+            transform: translateY(-5px);
+            box-shadow: var(--red-shadow);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            border-top: 3px solid var(--pure-red);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--light-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .footer-copy {
+            color: var(--dark-red);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .contact-links { flex-direction: column; align-items: center; }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">STRAIDNET</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">QA & AUTOMATION</h1>
+                <div class="hero-subtitle">Testing & Python Development</div>
+                <p class="hero-description">
+                    Building reliable testing workflows, Python automations, and data-driven solutions.
+                    Passionate about quality assurance, test automation, and efficient development processes.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-code"></i>
+                        View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-search"></i></div>
+                    <h3 class="skill-title">Manual Testing</h3>
+                    <p class="skill-desc">Exploratory testing, test case design, and defect identification across web and mobile applications.</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-robot"></i></div>
+                    <h3 class="skill-title">Test Automation</h3>
+                    <p class="skill-desc">Building automated testing workflows using Selenium, Python, and API testing frameworks.</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="skill-title">Python Development</h3>
+                    <p class="skill-desc">Creating automation scripts, bots, data processing tools, and API integrations.</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="skill-title">Data Processing</h3>
+                    <p class="skill-desc">Automating Excel, CSV, and database workflows with comprehensive data validation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title">Projects & Testing</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">Web Testing Suite</h3>
+                        <div class="project-type">Test Automation</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">Automated testing framework using Selenium WebDriver for web application testing and quality assurance workflows.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">Pytest</span>
+                        </div>
+                        <a href="https://github.com/straidnet" class="project-link">
+                            View on GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">Telegram Bot Collection</h3>
+                        <div class="project-type">Bot Development</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">A collection of Telegram bots built with Python for various automation tasks, user interactions, and data processing workflows.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Telegram API</span>
+                            <span class="tech-tag">Automation</span>
+                        </div>
+                        <a href="https://github.com/straidnet" class="project-link">
+                            View on GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">API Testing Framework</h3>
+                        <div class="project-type">API Testing</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">REST API testing framework with automated validation, data verification, and comprehensive testing workflows.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Requests</span>
+                            <span class="tech-tag">JSON</span>
+                        </div>
+                        <a href="https://github.com/straidnet" class="project-link">
+                            View on GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">Telegram Data Scraper</h3>
+                        <div class="project-type">Data Extraction</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">Advanced Telegram channel scraper for extracting messages, media, and user data with smart filtering capabilities and automation.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Telethon</span>
+                            <span class="tech-tag">Data Mining</span>
+                        </div>
+                        <a href="https://github.com/straidnet" class="project-link">
+                            View on GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">Arbitrage Checker</h3>
+                        <div class="project-type">Financial Analysis</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">Real-time arbitrage opportunity detector that monitors price differences across multiple cryptocurrency exchanges with automated alerts.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">Real-time Data</span>
+                        </div>
+                        <a href="https://github.com/straidnet" class="project-link">
+                            View on GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">Automation Scripts</h3>
+                        <div class="project-type">Utilities</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">Various Python scripts for automating repetitive tasks, data processing, file management, and improving workflow efficiency.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Task Automation</span>
+                            <span class="tech-tag">File Processing</span>
+                        </div>
+                        <a href="https://github.com/straidnet" class="project-link">
+                            View on GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Connect</h2>
+                <p style="color: var(--light-gray); font-size: 1.2rem; margin-bottom: 2rem;">
+                    Ready to collaborate on testing projects or automation workflows? Let's discuss your needs!
+                </p>
+                <div class="contact-links">
+                    <a href="https://github.com/straidnet" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://t.me/StraidnetBot" class="contact-link">
+                        <i class="fab fa-telegram"></i>
+                        Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-text">
+                <strong>STRAIDNET</strong> - QA & Automation Developer
+            </div>
+            <div class="footer-copy">
+                © 2022-2024 STRAIDNET. Quality-driven solutions.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
